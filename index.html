@@ -3,263 +3,539 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohan Jadhav — Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <title>Mohan Vasudev Jadhav — Flutter Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --navy: #0d1b2e;
+      --navy2: #0a1628;
+      --navy3: #111f35;
+      --navy4: #162035;
+      --cyan: #00c8ff;
+      --cyan2: #00a8d4;
+      --white: #ffffff;
+      --gray: #8ca0b8;
+      --card-bg: #0f1e32;
+      --card-border: rgba(0,200,255,0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: 'DM Sans', sans-serif;
-      background: #0a0a0f;
-      color: #e8e6f0;
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
       min-height: 100vh;
       overflow-x: hidden;
     }
 
-    body::before {
-      content: '';
-      position: fixed; inset: 0;
-      background-image: linear-gradient(rgba(120,100,255,0.04) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(120,100,255,0.04) 1px, transparent 1px);
-      background-size: 48px 48px;
-      pointer-events: none; z-index: 0;
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(10, 22, 40, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,200,255,0.08);
     }
 
-    .pf-inner { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 0 24px 80px; }
+    .nav-logo {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--cyan), var(--cyan2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 800; color: var(--navy2);
+      letter-spacing: -0.5px;
+    }
 
-    /* Hero */
-    .hero { padding: 72px 0 56px; animation: fadeUp 0.6s ease both; }
-    .hero-eyebrow {
-      display: inline-block;
-      font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-      color: #9d8fff; font-weight: 500; margin-bottom: 20px;
-      border: 1px solid rgba(157,143,255,0.3); padding: 5px 14px; border-radius: 99px;
+    .nav-links { display: flex; gap: 36px; }
+    .nav-links a {
+      color: var(--white); text-decoration: none; font-size: 15px;
+      font-weight: 500; transition: color 0.2s;
     }
-    .hero-name {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(42px, 8vw, 72px);
-      font-weight: 800; line-height: 1.05;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #ffffff 30%, #9d8fff);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      margin-bottom: 10px;
+    .nav-links a:hover { color: var(--cyan); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 100px 24px 60px;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(0,120,200,0.12) 0%, transparent 70%);
+      position: relative;
     }
+
+    .hero-content { max-width: 780px; }
+
+    .hero-greeting {
+      font-size: clamp(36px, 6vw, 68px); font-weight: 800;
+      line-height: 1.1; margin-bottom: 18px;
+    }
+    .hero-greeting span { color: var(--cyan); }
+
     .hero-role {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(18px, 4vw, 28px);
-      font-weight: 400; color: #7b77a0; margin-bottom: 24px;
+      font-size: clamp(16px, 2.5vw, 22px); font-weight: 500;
+      color: var(--gray); margin-bottom: 24px;
     }
+
     .hero-bio {
-      font-size: 16px; line-height: 1.75; color: #a09cb8;
-      max-width: 580px; margin-bottom: 36px;
-    }
-    .hero-chips { display: flex; flex-wrap: wrap; gap: 10px; }
-    .chip {
-      font-size: 13px; padding: 6px 16px; border-radius: 99px;
-      border: 1px solid rgba(157,143,255,0.25);
-      color: #c4bfdf; background: rgba(157,143,255,0.07);
+      font-size: 16px; line-height: 1.8; color: var(--gray);
+      max-width: 640px; margin: 0 auto 40px;
     }
 
-    .section-divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 56px 0 40px; }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
-    .section-label {
-      font-family: 'Syne', sans-serif;
-      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-      color: #9d8fff; font-weight: 700; margin-bottom: 28px;
+    .btn-primary {
+      padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 700;
+      background: linear-gradient(135deg, var(--cyan), var(--cyan2));
+      color: var(--navy2); border: none; cursor: pointer; text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .btn-outline {
+      padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 700;
+      background: transparent; color: var(--cyan);
+      border: 2px solid var(--cyan); cursor: pointer; text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-outline:hover { background: rgba(0,200,255,0.08); transform: translateY(-1px); }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 90px 48px; }
+
+    .section-title {
+      text-align: center; font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800; margin-bottom: 14px;
+    }
+    .section-underline {
+      width: 64px; height: 3px; background: var(--cyan);
+      margin: 0 auto 60px; border-radius: 2px;
     }
 
-    /* Experience */
-    .exp-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 16px; padding: 28px 32px; position: relative; overflow: hidden;
-      animation: fadeUp 0.6s 0.1s ease both;
-    }
-    .exp-card::before {
-      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-      width: 3px; background: linear-gradient(180deg, #9d8fff, #5f4bdd);
-      border-radius: 3px 0 0 3px;
-    }
-    .exp-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
-    .exp-company { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: #fff; }
-    .exp-period { font-size: 12px; color: #6a6680; padding: 4px 12px; background: rgba(255,255,255,0.05); border-radius: 99px; align-self: flex-start; }
-    .exp-role { font-size: 14px; color: #9d8fff; margin-bottom: 16px; font-weight: 500; }
-    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .exp-bullets li { font-size: 14px; color: #a09cb8; line-height: 1.6; padding-left: 20px; position: relative; }
-    .exp-bullets li::before { content: '→'; position: absolute; left: 0; color: #9d8fff; font-size: 12px; top: 2px; }
+    /* ── ABOUT ── */
+    #about { background: var(--navy2); }
 
-    /* Projects */
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; max-width: 1100px; margin: 0 auto; align-items: start;
+    }
+
+    .about-left h2 {
+      font-size: clamp(22px, 3vw, 30px); font-weight: 800;
+      color: var(--cyan); margin-bottom: 20px;
+    }
+    .about-left p { font-size: 15px; line-height: 1.85; color: var(--gray); margin-bottom: 16px; }
+
+    .about-stats { display: flex; gap: 16px; margin-top: 30px; flex-wrap: wrap; }
+    .stat-card {
+      flex: 1; min-width: 130px; background: var(--card-bg);
+      border: 1px solid var(--card-border); border-radius: 12px;
+      padding: 22px 20px; text-align: center;
+    }
+    .stat-val { font-size: 32px; font-weight: 800; color: var(--cyan); }
+    .stat-lbl { font-size: 13px; color: var(--gray); margin-top: 4px; font-weight: 500; }
+
+    /* timeline */
+    .timeline { display: flex; flex-direction: column; gap: 16px; }
+    .tl-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 12px; padding: 20px 22px;
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .tl-icon { font-size: 26px; flex-shrink: 0; margin-top: 2px; }
+    .tl-period { font-size: 14px; font-weight: 700; color: var(--cyan); margin-bottom: 4px; }
+    .tl-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--navy); }
+
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px; max-width: 900px; margin: 0 auto;
+    }
+
     .project-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 14px; padding: 24px;
-      transition: border-color 0.2s, background 0.2s;
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 30px 28px;
+      transition: border-color 0.2s, transform 0.2s;
     }
-    .project-card:hover { border-color: rgba(157,143,255,0.35); background: rgba(157,143,255,0.06); }
-    .project-icon { font-size: 28px; margin-bottom: 14px; }
-    .project-name { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 8px; }
-    .project-desc { font-size: 13px; color: #8a87a0; line-height: 1.65; margin-bottom: 14px; }
-    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .project-tag { font-size: 11px; padding: 3px 10px; border-radius: 99px; background: rgba(157,143,255,0.12); color: #c4bfdf; }
+    .project-card:hover { border-color: rgba(0,200,255,0.4); transform: translateY(-3px); }
 
-    /* Skills */
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
-    .skill-group {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 12px; padding: 18px 20px;
+    .project-icon { font-size: 36px; margin-bottom: 16px; }
+    .project-name { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .project-desc { font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 18px; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .project-tag {
+      font-size: 12px; padding: 4px 12px; border-radius: 99px;
+      border: 1px solid rgba(0,200,255,0.3); color: var(--cyan);
+      background: rgba(0,200,255,0.06);
     }
-    .skill-group-title { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; color: #9d8fff; margin-bottom: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
-    .skill-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
-    .skill-list li { font-size: 13px; color: #c4bfdf; }
 
-    /* Education */
+    /* ── SKILLS ── */
+    #skills { background: var(--navy2); }
+
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px; max-width: 1100px; margin: 0 auto;
+    }
+
+    .skill-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 30px 28px; text-align: center;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .skill-card:hover { border-color: rgba(0,200,255,0.4); transform: translateY(-3px); }
+
+    .skill-icon { font-size: 38px; margin-bottom: 14px; }
+    .skill-card-title { font-size: 17px; font-weight: 700; margin-bottom: 18px; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .skill-tag {
+      font-size: 12px; padding: 5px 14px; border-radius: 99px;
+      border: 1px solid rgba(0,200,255,0.25); color: var(--cyan);
+      background: rgba(0,200,255,0.06);
+    }
+
+    /* ── EDUCATION ── */
+    #education { background: var(--navy); }
+
+    .edu-grid { display: flex; flex-direction: column; gap: 16px; max-width: 800px; margin: 0 auto; }
     .edu-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
+      background: var(--card-bg); border: 1px solid var(--card-border);
       border-radius: 14px; padding: 24px 28px;
-      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
     }
-    .edu-degree { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 4px; }
-    .edu-school { font-size: 14px; color: #9d8fff; }
-    .edu-year { font-size: 12px; color: #6a6680; padding: 6px 16px; background: rgba(255,255,255,0.05); border-radius: 99px; }
-
-    /* Contact */
-    .contact-row { display: flex; flex-wrap: wrap; gap: 12px; }
-    .contact-item {
-      padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 500;
-      border: 1px solid rgba(157,143,255,0.3); color: #c4bfdf;
-      background: rgba(157,143,255,0.07);
+    .edu-degree { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .edu-school { font-size: 13px; color: var(--gray); }
+    .edu-badge {
+      font-size: 13px; font-weight: 600; color: var(--cyan);
+      background: rgba(0,200,255,0.08); border: 1px solid rgba(0,200,255,0.2);
+      padding: 6px 16px; border-radius: 99px; white-space: nowrap;
     }
 
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    /* CGPA strip */
+    .cgpa-strip {
+      display: flex; flex-wrap: wrap; gap: 14px;
+      max-width: 800px; margin: 24px auto 0; justify-content: center;
+    }
+    .cgpa-pill {
+      text-align: center; background: var(--card-bg);
+      border: 1px solid var(--card-border); border-radius: 12px; padding: 16px 22px;
+      flex: 1; min-width: 110px;
+    }
+    .cgpa-val { font-size: 24px; font-weight: 800; color: var(--cyan); }
+    .cgpa-lbl { font-size: 11px; color: var(--gray); margin-top: 4px; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--navy2); text-align: center; }
+
+    .contact-sub {
+      font-size: 16px; color: var(--gray); max-width: 520px;
+      margin: -40px auto 48px; line-height: 1.7;
+    }
+    .contact-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .contact-btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 14px 26px; border-radius: 10px; font-size: 15px; font-weight: 600;
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      color: var(--white); text-decoration: none; cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    }
+    .contact-btn:hover { border-color: rgba(0,200,255,0.5); background: rgba(0,200,255,0.07); transform: translateY(-2px); }
+    .contact-btn span { font-size: 18px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy2); text-align: center;
+      padding: 28px 24px; border-top: 1px solid rgba(0,200,255,0.08);
+    }
+    footer p { font-size: 13px; color: var(--gray); margin-bottom: 4px; }
+
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+      section { padding: 70px 20px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
   </style>
 </head>
 <body>
-  <div class="pf-inner">
 
-    <!-- Hero -->
-    <div class="hero">
-      <div class="hero-eyebrow">Portfolio — 2025</div>
-      <div class="hero-name">Mohan Jadhav</div>
-      <div class="hero-role">Flutter Developer &amp; CS Final Year Student</div>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-logo">MJ</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content">
+      <div class="hero-greeting">Hi, I'm <span>Mohan Jadhav</span></div>
+      <div class="hero-role">Flutter Developer &amp; Computer Engineering Student</div>
       <p class="hero-bio">
-        Computer Science student with hands-on experience building production-grade mobile applications. Passionate about clean code, responsive design, and cross-platform development with Flutter &amp; Dart.
+        Final-year B.E. Computer Engineering student at NBN Sinhgad, Pune with hands-on experience
+        building production Flutter &amp; Firebase mobile applications. Strong foundation in Java, OOP, DSA,
+        Angular, and core CS subjects. CGPA 8.19 across 7 semesters.
       </p>
-      <div class="hero-chips">
-        <span class="chip">Flutter</span>
-        <span class="chip">Dart</span>
-        <span class="chip">Java</span>
-        <span class="chip">Operating Systems</span>
-        <span class="chip">Computer Science</span>
-        <span class="chip">Mobile Dev</span>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#projects">Explore Work</a>
+        <a class="btn-outline" href="#contact">Get In Touch</a>
       </div>
     </div>
+  </section>
 
-    <!-- Experience -->
-    <hr class="section-divider">
-    <div class="section-label">Experience</div>
-    <div class="exp-card">
-      <div class="exp-top">
-        <div class="exp-company">Biencaps Pvt. Ltd.</div>
-        <div class="exp-period">Internship · 2024</div>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-title">About Me</div>
+    <div class="section-underline"></div>
+    <div class="about-grid">
+      <div class="about-left">
+        <h2>My Journey</h2>
+        <p>
+          I'm a Computer Engineering student at NBN Sinhgad School of Engineering, Pune (Savitribai Phule
+          Pune University), currently in my final year with a strong CGPA of 8.19.
+        </p>
+        <p>
+          My internship at Incubators Systems Pvt. Ltd. gave me real-world experience building Flutter
+          mobile apps with Firebase authentication and Firestore. I developed AgriMart — a full e-commerce
+          app for agricultural products — and a dynamic MCQ quiz application, both end-to-end.
+        </p>
+        <p>
+          Beyond mobile dev, my academics have covered Machine Learning, AI, Blockchain, Data Science,
+          Computer Networks, OS, DBMS, and more — giving me a broad CS foundation.
+        </p>
+        <div class="about-stats">
+          <div class="stat-card">
+            <div class="stat-val">8.19</div>
+            <div class="stat-lbl">CGPA</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">2+</div>
+            <div class="stat-lbl">Apps Built</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">3mo</div>
+            <div class="stat-lbl">Internship</div>
+          </div>
+        </div>
       </div>
-      <div class="exp-role">Flutter Developer Intern</div>
-      <ul class="exp-bullets">
-        <li>Built a fully responsive e-commerce application using Flutter &amp; Dart with dynamic product listings, cart, and checkout flow.</li>
-        <li>Developed an interactive quiz application with timer functionality, score tracking, and result screens.</li>
-        <li>Worked with real-world codebase standards — state management, reusable components, and clean architecture patterns.</li>
-        <li>Collaborated in a professional development environment, delivering features end-to-end.</li>
-      </ul>
-    </div>
 
-    <!-- Projects -->
-    <hr class="section-divider">
-    <div class="section-label">Projects</div>
+      <div class="about-right">
+        <div class="timeline">
+          <div class="tl-card">
+            <div class="tl-icon">🏫</div>
+            <div>
+              <div class="tl-period">2020 | SSC — Shri Shivaji High School, Washim</div>
+              <div class="tl-desc">Scored 93% in SSC. Strong foundation in mathematics and sciences.</div>
+            </div>
+          </div>
+          <div class="tl-card">
+            <div class="tl-icon">🔬</div>
+            <div>
+              <div class="tl-period">2022 | HSC Science — Shree Mainagiri Maharaj Vidyalaya</div>
+              <div class="tl-desc">Scored 85% in HSC Science stream (PCM + Biology). Qualified for engineering entrance.</div>
+            </div>
+          </div>
+          <div class="tl-card">
+            <div class="tl-icon">🎓</div>
+            <div>
+              <div class="tl-period">2022–Present | B.E. CSE — NBN Sinhgad, Pune</div>
+              <div class="tl-desc">Pursuing Computer Engineering at Savitribai Phule Pune University. Consistent CGPA of 8.19 across 7 semesters.</div>
+            </div>
+          </div>
+          <div class="tl-card">
+            <div class="tl-icon">📱</div>
+            <div>
+              <div class="tl-period">Jan–Mar 2025 | Flutter Intern — Incubators Systems Pvt. Ltd.</div>
+              <div class="tl-desc">Built production Flutter apps with Firebase. Developed AgriMart e-commerce app and Quiz application. Followed full SDLC practices.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-title">Projects</div>
+    <div class="section-underline"></div>
     <div class="projects-grid">
       <div class="project-card">
-        <div class="project-icon">🛒</div>
-        <div class="project-name">E-Commerce App</div>
-        <div class="project-desc">A fully responsive mobile shopping app with product browsing, cart management, and seamless checkout experience.</div>
+        <div class="project-icon">🌾</div>
+        <div class="project-name">AgriMart — E-Commerce App</div>
+        <div class="project-desc">
+          Flutter mobile app for buying and selling agricultural products. Features product listing,
+          cart management, and order placement with Firebase Auth and Firestore for secure backend
+          integration. Followed complete SDLC from requirement analysis to testing.
+        </div>
         <div class="project-tags">
           <span class="project-tag">Flutter</span>
           <span class="project-tag">Dart</span>
-          <span class="project-tag">Responsive UI</span>
+          <span class="project-tag">Firebase Auth</span>
+          <span class="project-tag">Firestore</span>
+          <span class="project-tag">SDLC</span>
         </div>
       </div>
       <div class="project-card">
         <div class="project-icon">🧠</div>
-        <div class="project-name">Quiz App</div>
-        <div class="project-desc">Interactive quiz platform with category selection, countdown timers, score tracking, and result summary screens.</div>
+        <div class="project-name">Quiz App — MCQ System</div>
+        <div class="project-desc">
+          MCQ-based quiz application with dynamic question navigation, countdown timers, instant score
+          calculation, and detailed result evaluation. Designed a fully responsive and interactive UI
+          using Flutter widgets with thorough testing and debugging.
+        </div>
         <div class="project-tags">
           <span class="project-tag">Flutter</span>
           <span class="project-tag">Dart</span>
           <span class="project-tag">State Management</span>
+          <span class="project-tag">Responsive UI</span>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Skills -->
-    <hr class="section-divider">
-    <div class="section-label">Skills</div>
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-title">Technical Skills</div>
+    <div class="section-underline"></div>
     <div class="skills-grid">
-      <div class="skill-group">
-        <div class="skill-group-title">Mobile Dev</div>
-        <ul class="skill-list">
-          <li>Flutter</li>
-          <li>Dart</li>
-          <li>Responsive Design</li>
-          <li>UI/UX Principles</li>
-        </ul>
+      <div class="skill-card">
+        <div class="skill-icon">📱</div>
+        <div class="skill-card-title">Mobile Development</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Flutter</span>
+          <span class="skill-tag">Dart</span>
+          <span class="skill-tag">Responsive UI</span>
+          <span class="skill-tag">Material Design</span>
+        </div>
       </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Languages</div>
-        <ul class="skill-list">
-          <li>Dart</li>
-          <li>Java</li>
-          <li>C / C++</li>
-        </ul>
+      <div class="skill-card">
+        <div class="skill-icon">🖥️</div>
+        <div class="skill-card-title">Frontend &amp; Languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Angular</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">C</span>
+          <span class="skill-tag">C++</span>
+        </div>
       </div>
-      <div class="skill-group">
-        <div class="skill-group-title">CS Fundamentals</div>
-        <ul class="skill-list">
-          <li>Operating Systems</li>
-          <li>DBMS</li>
-          <li>Computer Networks</li>
-          <li>OOP Concepts</li>
-        </ul>
+      <div class="skill-card">
+        <div class="skill-icon">🔥</div>
+        <div class="skill-card-title">Backend &amp; Databases</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Firebase Auth</span>
+          <span class="skill-tag">Firestore</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">API Integration</span>
+        </div>
       </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Tools</div>
-        <ul class="skill-list">
-          <li>VS Code</li>
-          <li>Android Studio</li>
-          <li>Git &amp; GitHub</li>
-        </ul>
+      <div class="skill-card">
+        <div class="skill-icon">⚙️</div>
+        <div class="skill-card-title">CS Concepts</div>
+        <div class="skill-tags">
+          <span class="skill-tag">OOP</span>
+          <span class="skill-tag">DSA</span>
+          <span class="skill-tag">Operating Systems</span>
+          <span class="skill-tag">DBMS</span>
+          <span class="skill-tag">Computer Networks</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🛠️</div>
+        <div class="skill-card-title">Tools &amp; DevOps</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">GitHub</span>
+          <span class="skill-tag">GitLab</span>
+          <span class="skill-tag">VS Code</span>
+          <span class="skill-tag">Android Studio</span>
+          <span class="skill-tag">Linux</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🤖</div>
+        <div class="skill-card-title">Advanced Subjects</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Machine Learning</span>
+          <span class="skill-tag">Artificial Intelligence</span>
+          <span class="skill-tag">Blockchain</span>
+          <span class="skill-tag">Data Science</span>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Education -->
-    <hr class="section-divider">
-    <div class="section-label">Education</div>
-    <div class="edu-card">
-      <div>
-        <div class="edu-degree">B.E. Computer Science &amp; Engineering</div>
-        <div class="edu-school">Final Year Student · Maharashtra</div>
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-title">Education</div>
+    <div class="section-underline"></div>
+
+    <div class="cgpa-strip">
+      <div class="cgpa-pill"><div class="cgpa-val">8.19</div><div class="cgpa-lbl">Overall CGPA</div></div>
+      <div class="cgpa-pill"><div class="cgpa-val">8.40</div><div class="cgpa-lbl">Sem 7 SGPA</div></div>
+      <div class="cgpa-pill"><div class="cgpa-val">85%</div><div class="cgpa-lbl">HSC Science</div></div>
+      <div class="cgpa-pill"><div class="cgpa-val">93%</div><div class="cgpa-lbl">SSC</div></div>
+    </div>
+
+    <div style="height:32px"></div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div>
+          <div class="edu-degree">B.E. Computer Science &amp; Engineering</div>
+          <div class="edu-school">NBN Sinhgad School of Engineering, Pune · Savitribai Phule Pune University</div>
+        </div>
+        <div class="edu-badge">2022 – 2026 · CGPA 8.19</div>
       </div>
-      <div class="edu-year">2021 – 2025</div>
+      <div class="edu-card">
+        <div>
+          <div class="edu-degree">H.S.C — Science Stream</div>
+          <div class="edu-school">Shree Mainagiri Maharaj Vidyalaya, Toe · Maharashtra State Board</div>
+        </div>
+        <div class="edu-badge">2022 · 85%</div>
+      </div>
+      <div class="edu-card">
+        <div>
+          <div class="edu-degree">S.S.C</div>
+          <div class="edu-school">Shri Shivaji High School, Washim · Maharashtra State Board</div>
+        </div>
+        <div class="edu-badge">2020 · 93%</div>
+      </div>
     </div>
+  </section>
 
-    <!-- Contact -->
-    <hr class="section-divider">
-    <div class="section-label">Contact</div>
-    <div class="contact-row">
-      <div class="contact-item">📧 your.email@example.com</div>
-      <div class="contact-item">💼 linkedin.com/in/mohanjadhav</div>
-      <div class="contact-item">🐙 github.com/mohanjadhav</div>
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-title">Let's Work Together</div>
+    <div class="section-underline"></div>
+    <p class="contact-sub">
+      Open to internship opportunities, entry-level roles, and collaborative projects.
+      Feel free to reach out for any inquiries about Flutter development or mobile applications.
+    </p>
+    <div class="contact-btns">
+      <a class="contact-btn" href="#" onclick="alert('📧 Email: email.mohanjadhav@gmail.com'); return false;">
+        <span>✉️</span> Email
+      </a>
+      <a class="contact-btn" href="https://github.com/mohan101k" target="_blank">
+        <span>🐙</span> GitHub
+      </a>
+      <a class="contact-btn" href="https://gitlab.com/mohan101k" target="_blank">
+        <span>🦊</span> GitLab
+      </a>
+      <a class="contact-btn" href="https://www.linkedin.com/in/mohanj18/" target="_blank">
+        <span>🔗</span> LinkedIn
+      </a>
+      <a class="contact-btn" href="#" onclick="alert('📞 Phone: +91 9960939448'); return false;">
+        <span>📞</span> Call
+      </a>
     </div>
+  </section>
 
-  </div>
-</body>
-</html>
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Mohan Vasudev Jadhav | Flutter Developer &amp; CS Engineer | All Rights Reserved</p>
+    <p>Crafted with passion • Designe
