@@ -244,6 +244,13 @@
     .contact-btn:hover { border-color: rgba(0,200,255,0.5); background: rgba(0,200,255,0.07); transform: translateY(-2px); }
     .contact-btn span { font-size: 18px; }
 
+    /* Resume button gets a slight highlight so it stands out as the primary contact action */
+    .contact-btn.resume-btn {
+      background: linear-gradient(135deg, rgba(0,200,255,0.15), rgba(0,168,212,0.08));
+      border: 1px solid rgba(0,200,255,0.4);
+    }
+    .contact-btn.resume-btn:hover { border-color: var(--cyan); }
+
     /* ── FOOTER ── */
     footer {
       background: var(--navy2); text-align: center;
@@ -447,7 +454,7 @@
       </div>
       <div class="skill-card">
         <div class="skill-icon">🛠️</div>
-        <div class="skill-card-title">Tools &amp; DevOps</div>
+        <div class="skill-card-title">Tools &amp; Version Control</div>
         <div class="skill-tags">
           <span class="skill-tag">Git</span>
           <span class="skill-tag">GitHub</span>
@@ -465,6 +472,19 @@
           <span class="skill-tag">Artificial Intelligence</span>
           <span class="skill-tag">Blockchain</span>
           <span class="skill-tag">Data Science</span>
+        </div>
+      </div>
+      <!-- NEW: DevOps skill card -->
+      <div class="skill-card">
+        <div class="skill-icon">🚀</div>
+        <div class="skill-card-title">DevOps &amp; Deployment</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Git &amp; GitHub Actions</span>
+          <span class="skill-tag">CI/CD Pipelines</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Linux Shell Scripting</span>
+          <span class="skill-tag">Firebase Hosting &amp; Deployment</span>
+          <span class="skill-tag">App Build &amp; Release Management</span>
         </div>
       </div>
     </div>
@@ -517,6 +537,10 @@
       Feel free to reach out for any inquiries about Flutter development or mobile applications.
     </p>
     <div class="contact-btns">
+      <!-- NEW: Resume button — replace the href below with your actual Google Drive share link -->
+      <a class="contact-btn resume-btn" href="https://drive.google.com/file/d/YOUR_RESUME_FILE_ID/view?usp=sharing" target="_blank" rel="noopener">
+        <span>📄</span> Resume
+      </a>
       <a class="contact-btn" href="#" onclick="alert('📧 Email: email.mohanjadhav@gmail.com'); return false;">
         <span>✉️</span> Email
       </a>
@@ -538,4 +562,8 @@
   <!-- FOOTER -->
   <footer>
     <p>© 2025 Mohan Vasudev Jadhav | Flutter Developer &amp; CS Engineer | All Rights Reserved</p>
-    <p>Crafted with passion • Designe
+    <p>Crafted with passion • Designed &amp; Built by Mohan Jadhav</p>
+  </footer>
+
+</body>
+</html>
