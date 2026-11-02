@@ -3,578 +3,325 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohan Vasudev Jadhav — Flutter Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#090d18">
+  <meta name="description" content="Mohan Jadhav — Software Engineer focused on Cloud, DevOps, automation, monitoring, and application development.">
+  <title>Mohan Jadhav | Software Engineer • Cloud & DevOps</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --navy: #0d1b2e;
-      --navy2: #0a1628;
-      --navy3: #111f35;
-      --navy4: #162035;
-      --cyan: #00c8ff;
-      --cyan2: #00a8d4;
-      --white: #ffffff;
-      --gray: #8ca0b8;
-      --card-bg: #0f1e32;
-      --card-border: rgba(0,200,255,0.1);
+      --bg:#090d18; --panel:#101727; --panel2:#131e30; --text:#edf3ff;
+      --muted:#9aa9bf; --line:rgba(164,190,230,.13); --accent:#72e0c1;
+      --accent2:#83a9ff; --glow:rgba(114,224,193,.13); --max:1160px;
     }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--navy);
-      color: var(--white);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* ── NAVBAR ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 48px;
-      background: rgba(10, 22, 40, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0,200,255,0.08);
-    }
-
-    .nav-logo {
-      width: 44px; height: 44px; border-radius: 12px;
-      background: linear-gradient(135deg, var(--cyan), var(--cyan2));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 15px; font-weight: 800; color: var(--navy2);
-      letter-spacing: -0.5px;
-    }
-
-    .nav-links { display: flex; gap: 36px; }
-    .nav-links a {
-      color: var(--white); text-decoration: none; font-size: 15px;
-      font-weight: 500; transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--cyan); }
-
-    /* ── HERO ── */
-    #hero {
-      min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      text-align: center; padding: 100px 24px 60px;
-      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(0,120,200,0.12) 0%, transparent 70%);
-      position: relative;
-    }
-
-    .hero-content { max-width: 780px; }
-
-    .hero-greeting {
-      font-size: clamp(36px, 6vw, 68px); font-weight: 800;
-      line-height: 1.1; margin-bottom: 18px;
-    }
-    .hero-greeting span { color: var(--cyan); }
-
-    .hero-role {
-      font-size: clamp(16px, 2.5vw, 22px); font-weight: 500;
-      color: var(--gray); margin-bottom: 24px;
-    }
-
-    .hero-bio {
-      font-size: 16px; line-height: 1.8; color: var(--gray);
-      max-width: 640px; margin: 0 auto 40px;
-    }
-
-    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-
-    .btn-primary {
-      padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 700;
-      background: linear-gradient(135deg, var(--cyan), var(--cyan2));
-      color: var(--navy2); border: none; cursor: pointer; text-decoration: none;
-      transition: opacity 0.2s, transform 0.2s;
-    }
-    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
-
-    .btn-outline {
-      padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 700;
-      background: transparent; color: var(--cyan);
-      border: 2px solid var(--cyan); cursor: pointer; text-decoration: none;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .btn-outline:hover { background: rgba(0,200,255,0.08); transform: translateY(-1px); }
-
-    /* ── SECTION COMMON ── */
-    section { padding: 90px 48px; }
-
-    .section-title {
-      text-align: center; font-size: clamp(28px, 4vw, 40px);
-      font-weight: 800; margin-bottom: 14px;
-    }
-    .section-underline {
-      width: 64px; height: 3px; background: var(--cyan);
-      margin: 0 auto 60px; border-radius: 2px;
-    }
-
-    /* ── ABOUT ── */
-    #about { background: var(--navy2); }
-
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 60px; max-width: 1100px; margin: 0 auto; align-items: start;
-    }
-
-    .about-left h2 {
-      font-size: clamp(22px, 3vw, 30px); font-weight: 800;
-      color: var(--cyan); margin-bottom: 20px;
-    }
-    .about-left p { font-size: 15px; line-height: 1.85; color: var(--gray); margin-bottom: 16px; }
-
-    .about-stats { display: flex; gap: 16px; margin-top: 30px; flex-wrap: wrap; }
-    .stat-card {
-      flex: 1; min-width: 130px; background: var(--card-bg);
-      border: 1px solid var(--card-border); border-radius: 12px;
-      padding: 22px 20px; text-align: center;
-    }
-    .stat-val { font-size: 32px; font-weight: 800; color: var(--cyan); }
-    .stat-lbl { font-size: 13px; color: var(--gray); margin-top: 4px; font-weight: 500; }
-
-    /* timeline */
-    .timeline { display: flex; flex-direction: column; gap: 16px; }
-    .tl-card {
-      background: var(--card-bg); border: 1px solid var(--card-border);
-      border-radius: 12px; padding: 20px 22px;
-      display: flex; gap: 16px; align-items: flex-start;
-    }
-    .tl-icon { font-size: 26px; flex-shrink: 0; margin-top: 2px; }
-    .tl-period { font-size: 14px; font-weight: 700; color: var(--cyan); margin-bottom: 4px; }
-    .tl-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
-
-    /* ── PROJECTS ── */
-    #projects { background: var(--navy); }
-
-    .projects-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px; max-width: 900px; margin: 0 auto;
-    }
-
-    .project-card {
-      background: var(--card-bg); border: 1px solid var(--card-border);
-      border-radius: 16px; padding: 30px 28px;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .project-card:hover { border-color: rgba(0,200,255,0.4); transform: translateY(-3px); }
-
-    .project-icon { font-size: 36px; margin-bottom: 16px; }
-    .project-name { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-    .project-desc { font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 18px; }
-    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-    .project-tag {
-      font-size: 12px; padding: 4px 12px; border-radius: 99px;
-      border: 1px solid rgba(0,200,255,0.3); color: var(--cyan);
-      background: rgba(0,200,255,0.06);
-    }
-
-    /* ── SKILLS ── */
-    #skills { background: var(--navy2); }
-
-    .skills-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px; max-width: 1100px; margin: 0 auto;
-    }
-
-    .skill-card {
-      background: var(--card-bg); border: 1px solid var(--card-border);
-      border-radius: 16px; padding: 30px 28px; text-align: center;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .skill-card:hover { border-color: rgba(0,200,255,0.4); transform: translateY(-3px); }
-
-    .skill-icon { font-size: 38px; margin-bottom: 14px; }
-    .skill-card-title { font-size: 17px; font-weight: 700; margin-bottom: 18px; }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-    .skill-tag {
-      font-size: 12px; padding: 5px 14px; border-radius: 99px;
-      border: 1px solid rgba(0,200,255,0.25); color: var(--cyan);
-      background: rgba(0,200,255,0.06);
-    }
-
-    /* ── EDUCATION ── */
-    #education { background: var(--navy); }
-
-    .edu-grid { display: flex; flex-direction: column; gap: 16px; max-width: 800px; margin: 0 auto; }
-    .edu-card {
-      background: var(--card-bg); border: 1px solid var(--card-border);
-      border-radius: 14px; padding: 24px 28px;
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 12px;
-    }
-    .edu-degree { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
-    .edu-school { font-size: 13px; color: var(--gray); }
-    .edu-badge {
-      font-size: 13px; font-weight: 600; color: var(--cyan);
-      background: rgba(0,200,255,0.08); border: 1px solid rgba(0,200,255,0.2);
-      padding: 6px 16px; border-radius: 99px; white-space: nowrap;
-    }
-
-    /* CGPA strip */
-    .cgpa-strip {
-      display: flex; flex-wrap: wrap; gap: 14px;
-      max-width: 800px; margin: 24px auto 0; justify-content: center;
-    }
-    .cgpa-pill {
-      text-align: center; background: var(--card-bg);
-      border: 1px solid var(--card-border); border-radius: 12px; padding: 16px 22px;
-      flex: 1; min-width: 110px;
-    }
-    .cgpa-val { font-size: 24px; font-weight: 800; color: var(--cyan); }
-    .cgpa-lbl { font-size: 11px; color: var(--gray); margin-top: 4px; }
-
-    /* ── CONTACT ── */
-    #contact { background: var(--navy2); text-align: center; }
-
-    .contact-sub {
-      font-size: 16px; color: var(--gray); max-width: 520px;
-      margin: -40px auto 48px; line-height: 1.7;
-    }
-    .contact-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .contact-btn {
-      display: inline-flex; align-items: center; gap: 9px;
-      padding: 14px 26px; border-radius: 10px; font-size: 15px; font-weight: 600;
-      background: var(--card-bg); border: 1px solid var(--card-border);
-      color: var(--white); text-decoration: none; cursor: pointer;
-      transition: border-color 0.2s, background 0.2s, transform 0.2s;
-    }
-    .contact-btn:hover { border-color: rgba(0,200,255,0.5); background: rgba(0,200,255,0.07); transform: translateY(-2px); }
-    .contact-btn span { font-size: 18px; }
-
-    /* Resume button gets a slight highlight so it stands out as the primary contact action */
-    .contact-btn.resume-btn {
-      background: linear-gradient(135deg, rgba(0,200,255,0.15), rgba(0,168,212,0.08));
-      border: 1px solid rgba(0,200,255,0.4);
-    }
-    .contact-btn.resume-btn:hover { border-color: var(--cyan); }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--navy2); text-align: center;
-      padding: 28px 24px; border-top: 1px solid rgba(0,200,255,0.08);
-    }
-    footer p { font-size: 13px; color: var(--gray); margin-bottom: 4px; }
-
-    @media (max-width: 768px) {
-      nav { padding: 14px 20px; }
-      section { padding: 70px 20px; }
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{font-family:Manrope,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    ::selection{background:var(--accent);color:#07110f}
+    .noise{position:fixed;inset:0;pointer-events:none;opacity:.035;z-index:-1;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E")}
+    .container{width:min(var(--max),calc(100% - 48px));margin:auto}
+    .topbar{position:fixed;inset:0 0 auto;z-index:20;background:rgba(9,13,24,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    nav{height:76px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.04em}
+    .brand-mark{width:38px;height:38px;border:1px solid rgba(114,224,193,.55);border-radius:12px;display:grid;place-items:center;color:var(--accent);font-family:'DM Mono',monospace;font-size:13px;background:var(--glow)}
+    .navlinks{display:flex;align-items:center;gap:28px;color:var(--muted);font-size:13px;font-weight:700}
+    .navlinks a:hover,.navlinks a.active{color:var(--accent)}
+    .nav-cta{border:1px solid rgba(114,224,193,.4);padding:9px 15px;border-radius:9px;color:var(--accent)}
+    .menu-btn{display:none;background:none;color:var(--text);border:1px solid var(--line);border-radius:9px;padding:8px 11px}
+    .hero{min-height:760px;padding:160px 0 100px;display:flex;align-items:center;position:relative}
+    .hero:before{content:"";position:absolute;width:560px;height:560px;right:-90px;top:80px;border-radius:50%;background:radial-gradient(circle,var(--glow),transparent 68%);filter:blur(10px);pointer-events:none}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:70px;align-items:center;position:relative}
+    .eyebrow,.kicker{font-family:'DM Mono',monospace;color:var(--accent);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+    .eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:24px}
+    .eyebrow:before{content:"";height:1px;width:28px;background:var(--accent)}
+    h1{font-size:clamp(46px,7vw,82px);line-height:1.03;letter-spacing:-.075em;font-weight:800;margin-bottom:24px}
+    h1 span{color:var(--accent)}
+    .role{font-size:clamp(17px,2vw,21px);font-weight:700;color:#c5d2e6;margin-bottom:18px}
+    .intro{max-width:650px;color:var(--muted);font-size:15px;line-height:1.9}
+    .hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:32px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 19px;border-radius:10px;font-size:13px;font-weight:800;transition:.2s;border:1px solid transparent}
+    .btn:hover{transform:translateY(-3px)}
+    .btn-primary{background:var(--accent);color:#07120f}
+    .btn-ghost{border-color:var(--line);color:var(--text);background:rgba(255,255,255,.025)}
+    .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+    .hero-meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:34px;color:var(--muted);font-size:12px}
+    .hero-meta span{display:flex;align-items:center;gap:8px}
+    .dot{width:7px;height:7px;background:var(--accent);border-radius:50%;box-shadow:0 0 12px var(--accent)}
+    .terminal{background:rgba(16,23,39,.88);border:1px solid rgba(131,169,255,.22);border-radius:18px;box-shadow:0 25px 90px rgba(0,0,0,.35);overflow:hidden;transform:rotate(1.5deg)}
+    .terminal-head{height:46px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 16px;gap:7px}
+    .traffic{width:8px;height:8px;border-radius:50%;background:#ff7c78}.traffic:nth-child(2){background:#f4c96b}.traffic:nth-child(3){background:#72e0c1}
+    .terminal-title{margin-left:auto;font:11px 'DM Mono',monospace;color:#75849b}
+    .terminal-body{padding:25px 23px 28px;font:12px/2 'DM Mono',monospace;color:#aab8cc}
+    .terminal-body .prompt{color:var(--accent)}.terminal-body .cmd{color:#e9f0ff}.terminal-body .comment{color:#71829c}
+    .terminal-body .value{color:#83a9ff}
+    .terminal-foot{display:flex;gap:8px;flex-wrap:wrap;padding:0 23px 23px}
+    .mini-chip{font:10px 'DM Mono',monospace;padding:6px 9px;border:1px solid var(--line);border-radius:6px;color:#b9c8dc}
+    section{padding:100px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:42px}
+    .section-head h2{font-size:clamp(30px,4vw,43px);letter-spacing:-.06em;line-height:1.1;margin-top:10px}
+    .section-head p{max-width:420px;color:var(--muted);font-size:13px}
+    .about{background:linear-gradient(180deg,rgba(19,30,48,.48),rgba(9,13,24,0))}
+    .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
+    .surface{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px}
+    .about-copy p{color:var(--muted);font-size:14px;margin:13px 0;line-height:1.9}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:25px}
+    .stat{padding:17px 12px;border-radius:11px;background:var(--panel2);border:1px solid var(--line)}
+    .stat strong{display:block;color:var(--accent);font-size:25px;letter-spacing:-.05em}
+    .stat span{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+    .journey{display:flex;flex-direction:column;gap:15px}
+    .journey-item{display:grid;grid-template-columns:30px 1fr;gap:12px}
+    .journey-icon{width:28px;height:28px;border:1px solid rgba(114,224,193,.35);color:var(--accent);border-radius:8px;display:grid;place-items:center;font-size:12px}
+    .journey-item strong{display:block;font-size:13px;margin-bottom:3px}
+    .journey-item small{display:block;color:var(--muted);font-size:11px;line-height:1.7}
+    .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:17px}
+    .project{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:25px;display:flex;flex-direction:column;min-height:260px;transition:.25s}
+    .project:hover{transform:translateY(-5px);border-color:rgba(114,224,193,.45);box-shadow:0 18px 50px rgba(0,0,0,.2)}
+    .project-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px}
+    .project-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:var(--glow);color:var(--accent);font-size:19px}
+    .project-type{font:10px 'DM Mono',monospace;color:var(--accent);text-transform:uppercase;letter-spacing:.1em}
+    .project h3{font-size:17px;letter-spacing:-.03em;margin-bottom:9px}
+    .project p{color:var(--muted);font-size:12px;line-height:1.85;flex:1}
+    .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+    .tag{font:10px 'DM Mono',monospace;padding:5px 8px;border-radius:6px;color:#b8c9df;background:rgba(131,169,255,.07);border:1px solid rgba(131,169,255,.14)}
+    .project-link{display:inline-flex;align-items:center;gap:7px;color:var(--accent);font-size:11px;font-weight:800;margin-top:17px;width:max-content}
+    .project-link:hover{text-decoration:underline}
+    .skills{background:linear-gradient(180deg,rgba(19,30,48,.35),transparent)}
+    .skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .skill{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:21px}
+    .skill h3{font-size:13px;margin-bottom:13px}
+    .skill p{color:var(--muted);font-size:11px;line-height:2}
+    .skill .skill-symbol{font:11px 'DM Mono',monospace;color:var(--accent);margin-bottom:12px}
+    .experience{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .exp-card{padding:24px;background:var(--panel);border:1px solid var(--line);border-radius:14px}
+    .exp-card .date{font:10px 'DM Mono',monospace;color:var(--accent);margin-bottom:9px}
+    .exp-card h3{font-size:15px;margin-bottom:6px}
+    .exp-card p{font-size:12px;color:var(--muted);line-height:1.8}
+    .education{background:rgba(19,30,48,.28)}
+    .edu-list{display:grid;gap:12px;max-width:850px}
+    .edu{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:20px 22px;background:var(--panel);border:1px solid var(--line);border-radius:13px}
+    .edu h3{font-size:13px}.edu p{font-size:11px;color:var(--muted);margin-top:4px}
+    .edu-year{font:10px 'DM Mono',monospace;color:var(--accent);white-space:nowrap}
+    .contact-box{position:relative;overflow:hidden;padding:55px 35px;text-align:center;background:linear-gradient(135deg,#14253a,#101727 65%);border:1px solid rgba(114,224,193,.22);border-radius:20px}
+    .contact-box:after{content:"";position:absolute;width:320px;height:320px;border-radius:50%;background:var(--glow);filter:blur(60px);right:-90px;top:-180px;pointer-events:none}
+    .contact-box h2{font-size:clamp(30px,4vw,44px);letter-spacing:-.06em;margin:10px 0}
+    .contact-box p{color:var(--muted);font-size:13px;max-width:550px;margin:0 auto 25px}
+    .contact-links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+    .contact-links a{font-size:11px;font-weight:800;padding:10px 14px;border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.03)}
+    .contact-links a:hover{border-color:var(--accent);color:var(--accent)}
+    footer{padding:25px 0;border-top:1px solid var(--line);color:#718099;font-size:10px}
+    footer .container{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+    @media(max-width:850px){.hero-grid{grid-template-columns:1fr;gap:45px}.terminal{max-width:570px;transform:none}.hero{min-height:auto;padding:145px 0 85px}.about-grid{grid-template-columns:1fr}.skill-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:650px){.container{width:min(100% - 34px,var(--max))}.navlinks{display:none;position:absolute;top:76px;left:0;right:0;padding:20px 24px;background:#0d1423;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:18px}.navlinks.open{display:flex}.menu-btn{display:block}.nav-cta{display:none}section{padding:76px 0}.section-head{display:block}.section-head p{margin-top:13px}.projects-grid,.experience{grid-template-columns:1fr}.skill-grid{grid-template-columns:1fr 1fr}.stats{grid-template-columns:repeat(3,1fr)}.surface{padding:22px}.edu{align-items:flex-start;flex-direction:column}.contact-box{padding:42px 20px}}
+    @media(max-width:390px){.skill-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.hero-actions .btn{width:100%}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*{animation:none!important;transition:none!important}}
   </style>
 </head>
 <body>
-
-  <!-- NAVBAR -->
-  <nav>
-    <div class="nav-logo">MJ</div>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
+<div class="noise"></div>
+<header class="topbar">
+  <nav class="container">
+    <a class="brand" href="#home" aria-label="Mohan Jadhav home"><span class="brand-mark">MJ</span><span>mohan<span style="color:var(--accent)">.dev</span></span></a>
+    <div class="navlinks" id="navlinks">
+      <a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#experience">Journey</a><a href="#contact">Contact</a>
     </div>
+    <a class="nav-cta" href="mailto:email.mohanjadhav@gmail.com">Let's connect ↗</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
   </nav>
+</header>
 
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-content">
-      <div class="hero-greeting">Hi, I'm <span>Mohan Jadhav</span></div>
-      <div class="hero-role">Flutter Developer &amp; Computer Engineering Student</div>
-      <p class="hero-bio">
-        Final-year B.E. Computer Engineering student at NBN Sinhgad, Pune with hands-on experience
-        building production Flutter &amp; Firebase mobile applications. Strong foundation in Java, OOP, DSA,
-        Angular, and core CS subjects. CGPA 8.19 across 7 semesters.
-      </p>
-      <div class="hero-btns">
-        <a class="btn-primary" href="#projects">Explore Work</a>
-        <a class="btn-outline" href="#contact">Get In Touch</a>
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <div class="eyebrow">Software Engineer · Pune, India</div>
+        <h1>Building things<br>that <span>run</span> &amp; scale.</h1>
+        <div class="role">Cloud &amp; DevOps Enthusiast | Software Developer</div>
+        <p class="intro">I'm Mohan Jadhav, a Computer Science graduate who enjoys building applications and learning how to deploy, monitor, automate, and operate reliable systems. My hands-on work spans AWS infrastructure, Linux, Docker, CI/CD concepts, and observability—alongside application development.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">Explore my work <span>↘</span></a>
+          <a class="btn btn-ghost" href="https://drive.google.com/file/d/1HsYtrpaM19IDjd71rF3cQ58eAQ608Yop/view?usp=drive_link" target="_blank" rel="noopener">View DevOps resume ↗</a>
+        </div>
+        <div class="hero-meta"><span><i class="dot"></i> Open to learning &amp; collaboration</span><span>⌖ Pune, Maharashtra</span></div>
+      </div>
+      <div class="terminal reveal" aria-label="Decorative terminal showing technologies">
+        <div class="terminal-head"><i class="traffic"></i><i class="traffic"></i><i class="traffic"></i><span class="terminal-title">mohan@cloud-lab:~</span></div>
+        <div class="terminal-body">
+          <div><span class="prompt">$</span> <span class="cmd">whoami</span></div>
+          <div class="value">mohan-jadhav / software-engineer</div>
+          <br>
+          <div><span class="prompt">$</span> <span class="cmd">cat focus.txt</span></div>
+          <div>cloud infrastructure</div><div>automation &amp; scripting</div><div>metrics &amp; alerting</div><div>application development</div>
+          <br>
+          <div><span class="prompt">$</span> <span class="cmd">ls hands-on/</span></div>
+          <div class="value">aws-labs/  docker/  linux/  monitoring/</div>
+          <br>
+          <div class="comment"># Learn. Build. Break. Troubleshoot. Improve.</div>
+          <div><span class="prompt">$</span> <span class="cmd">_</span></div>
+        </div>
+        <div class="terminal-foot"><span class="mini-chip">AWS</span><span class="mini-chip">LINUX</span><span class="mini-chip">DOCKER</span><span class="mini-chip">PROMETHEUS</span><span class="mini-chip">GRAFANA</span></div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="section-title">About Me</div>
-    <div class="section-underline"></div>
-    <div class="about-grid">
-      <div class="about-left">
-        <h2>My Journey</h2>
-        <p>
-          I'm a Computer Engineering student at NBN Sinhgad School of Engineering, Pune (Savitribai Phule
-          Pune University), currently in my final year with a strong CGPA of 8.19.
-        </p>
-        <p>
-          My internship at Incubators Systems Pvt. Ltd. gave me real-world experience building Flutter
-          mobile apps with Firebase authentication and Firestore. I developed AgriMart — a full e-commerce
-          app for agricultural products — and a dynamic MCQ quiz application, both end-to-end.
-        </p>
-        <p>
-          Beyond mobile dev, my academics have covered Machine Learning, AI, Blockchain, Data Science,
-          Computer Networks, OS, DBMS, and more — giving me a broad CS foundation.
-        </p>
-        <div class="about-stats">
-          <div class="stat-card">
-            <div class="stat-val">8.19</div>
-            <div class="stat-lbl">CGPA</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-val">2+</div>
-            <div class="stat-lbl">Apps Built</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-val">3mo</div>
-            <div class="stat-lbl">Internship</div>
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-head reveal"><div><div class="kicker">01 / About</div><h2>A little about me.</h2></div><p>From writing application code to understanding what happens after deployment, I'm growing across the software lifecycle.</p></div>
+      <div class="about-grid">
+        <div class="surface about-copy reveal">
+          <div class="kicker">My approach</div>
+          <p>I completed my B.E. in Computer Science and Engineering from NBN Sinhgad School of Engineering, Pune. I started with mobile and application development, then expanded my focus toward cloud infrastructure and DevOps engineering.</p>
+          <p>I've worked through practical AWS labs involving VPC networking, public and private subnets, routing, EC2, S3, IAM, load balancing, target groups, health checks, and path-based routing. I also practice Linux administration, shell scripting, containerization, and service troubleshooting.</p>
+          <p>Recently, I've been building a monitoring and alerting lab with Prometheus, Node Exporter, Alertmanager, Grafana, and PagerDuty concepts. I like learning by implementing, checking logs, debugging failures, and documenting the work.</p>
+          <div class="stats">
+            <div class="stat"><strong>2026</strong><span>Graduate</span></div>
+            <div class="stat"><strong>AWS</strong><span>Hands-on labs</span></div>
+            <div class="stat"><strong>Ops</strong><span>Current focus</span></div>
           </div>
         </div>
-      </div>
-
-      <div class="about-right">
-        <div class="timeline">
-          <div class="tl-card">
-            <div class="tl-icon">🏫</div>
-            <div>
-              <div class="tl-period">2020 | SSC — Shri Shivaji High School, Washim</div>
-              <div class="tl-desc">Scored 93% in SSC. Strong foundation in mathematics and sciences.</div>
-            </div>
-          </div>
-          <div class="tl-card">
-            <div class="tl-icon">🔬</div>
-            <div>
-              <div class="tl-period">2022 | HSC Science — Shree Mainagiri Maharaj Vidyalaya</div>
-              <div class="tl-desc">Scored 85% in HSC Science stream (PCM + Biology). Qualified for engineering entrance.</div>
-            </div>
-          </div>
-          <div class="tl-card">
-            <div class="tl-icon">🎓</div>
-            <div>
-              <div class="tl-period">2022–Present | B.E. CSE — NBN Sinhgad, Pune</div>
-              <div class="tl-desc">Pursuing Computer Engineering at Savitribai Phule Pune University. Consistent CGPA of 8.19 across 7 semesters.</div>
-            </div>
-          </div>
-          <div class="tl-card">
-            <div class="tl-icon">📱</div>
-            <div>
-              <div class="tl-period">Jan–Mar 2025 | Flutter Intern — Incubators Systems Pvt. Ltd.</div>
-              <div class="tl-desc">Built production Flutter apps with Firebase. Developed AgriMart e-commerce app and Quiz application. Followed full SDLC practices.</div>
-            </div>
+        <div class="surface reveal">
+          <div class="kicker" style="margin-bottom:22px">Learning timeline</div>
+          <div class="journey">
+            <div class="journey-item"><span class="journey-icon">01</span><div><strong>Application Development</strong><small>Flutter, Dart, Firebase, Java, APIs, and database-backed applications.</small></div></div>
+            <div class="journey-item"><span class="journey-icon">02</span><div><strong>Cloud &amp; AWS Infrastructure</strong><small>VPC, subnets, route tables, IGW, NAT Gateway, EC2, S3, IAM, ALB, and target groups.</small></div></div>
+            <div class="journey-item"><span class="journey-icon">03</span><div><strong>Linux &amp; Containers</strong><small>Ubuntu administration, services, permissions practice, Nginx, Docker, and shell scripts.</small></div></div>
+            <div class="journey-item"><span class="journey-icon">04</span><div><strong>Monitoring &amp; Alerting</strong><small>Prometheus metrics, Node Exporter, Grafana dashboards, Alertmanager, and PagerDuty workflow concepts.</small></div></div>
+            <div class="journey-item"><span class="journey-icon">05</span><div><strong>Automation &amp; AI Projects</strong><small>Job scraping workflows, DynamoDB storage, backend APIs, matching, and notification pipeline planning.</small></div></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
   <section id="projects">
-    <div class="section-title">Projects</div>
-    <div class="section-underline"></div>
-    <div class="projects-grid">
-      <div class="project-card">
-        <div class="project-icon">🌾</div>
-        <div class="project-name">AgriMart — E-Commerce App</div>
-        <div class="project-desc">
-          Flutter mobile app for buying and selling agricultural products. Features product listing,
-          cart management, and order placement with Firebase Auth and Firestore for secure backend
-          integration. Followed complete SDLC from requirement analysis to testing.
-        </div>
-        <div class="project-tags">
-          <span class="project-tag">Flutter</span>
-          <span class="project-tag">Dart</span>
-          <span class="project-tag">Firebase Auth</span>
-          <span class="project-tag">Firestore</span>
-          <span class="project-tag">SDLC</span>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-icon">🧠</div>
-        <div class="project-name">Quiz App — MCQ System</div>
-        <div class="project-desc">
-          MCQ-based quiz application with dynamic question navigation, countdown timers, instant score
-          calculation, and detailed result evaluation. Designed a fully responsive and interactive UI
-          using Flutter widgets with thorough testing and debugging.
-        </div>
-        <div class="project-tags">
-          <span class="project-tag">Flutter</span>
-          <span class="project-tag">Dart</span>
-          <span class="project-tag">State Management</span>
-          <span class="project-tag">Responsive UI</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="section-title">Technical Skills</div>
-    <div class="section-underline"></div>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-icon">📱</div>
-        <div class="skill-card-title">Mobile Development</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Flutter</span>
-          <span class="skill-tag">Dart</span>
-          <span class="skill-tag">Responsive UI</span>
-          <span class="skill-tag">Material Design</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">🖥️</div>
-        <div class="skill-card-title">Frontend &amp; Languages</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Angular</span>
-          <span class="skill-tag">Java</span>
-          <span class="skill-tag">C</span>
-          <span class="skill-tag">C++</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">🔥</div>
-        <div class="skill-card-title">Backend &amp; Databases</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Firebase Auth</span>
-          <span class="skill-tag">Firestore</span>
-          <span class="skill-tag">MySQL</span>
-          <span class="skill-tag">SQL</span>
-          <span class="skill-tag">API Integration</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">⚙️</div>
-        <div class="skill-card-title">CS Concepts</div>
-        <div class="skill-tags">
-          <span class="skill-tag">OOP</span>
-          <span class="skill-tag">DSA</span>
-          <span class="skill-tag">Operating Systems</span>
-          <span class="skill-tag">DBMS</span>
-          <span class="skill-tag">Computer Networks</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">🛠️</div>
-        <div class="skill-card-title">Tools &amp; Version Control</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Git</span>
-          <span class="skill-tag">GitHub</span>
-          <span class="skill-tag">GitLab</span>
-          <span class="skill-tag">VS Code</span>
-          <span class="skill-tag">Android Studio</span>
-          <span class="skill-tag">Linux</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">🤖</div>
-        <div class="skill-card-title">Advanced Subjects</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Machine Learning</span>
-          <span class="skill-tag">Artificial Intelligence</span>
-          <span class="skill-tag">Blockchain</span>
-          <span class="skill-tag">Data Science</span>
-        </div>
-      </div>
-      <!-- NEW: DevOps skill card -->
-      <div class="skill-card">
-        <div class="skill-icon">🚀</div>
-        <div class="skill-card-title">DevOps &amp; Deployment</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Git &amp; GitHub Actions</span>
-          <span class="skill-tag">CI/CD Pipelines</span>
-          <span class="skill-tag">Docker</span>
-          <span class="skill-tag">Linux Shell Scripting</span>
-          <span class="skill-tag">Firebase Hosting &amp; Deployment</span>
-          <span class="skill-tag">App Build &amp; Release Management</span>
-        </div>
+    <div class="container">
+      <div class="section-head reveal"><div><div class="kicker">02 / Selected work</div><h2>Projects &amp; practical labs.</h2></div><p>Hands-on builds and proof-of-concepts focused on learning real deployment, infrastructure, and application workflows.</p></div>
+      <div class="projects-grid">
+        <article class="project reveal">
+          <div class="project-top"><span class="project-icon">◉</span><span class="project-type">Observability · DevOps</span></div>
+          <h3>Monitoring &amp; Alerting Lab</h3>
+          <p>Built a metrics and alerting environment using Prometheus, Node Exporter, and Alertmanager, with Grafana visualization and PagerDuty integration concepts. Practiced service setup, configuration validation, systemd management, and troubleshooting.</p>
+          <div class="tags"><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">Alertmanager</span><span class="tag">Node Exporter</span><span class="tag">Ubuntu 22.04</span></div>
+          <a class="project-link" href="https://github.com/mohan101k/Monitoring-Alerting-Grafana-PagerDuty" target="_blank" rel="noopener">View repository ↗</a>
+        </article>
+        <article class="project reveal">
+          <div class="project-top"><span class="project-icon">⌘</span><span class="project-type">AWS · Deployment</span></div>
+          <h3>Flask App on AWS EC2</h3>
+          <p>Worked on deploying a Flask application on EC2 with Nginx as a reverse proxy. Practiced Linux server setup, application serving, Nginx configuration, Git-based deployment, and troubleshooting production-style web-server issues.</p>
+          <div class="tags"><span class="tag">AWS EC2</span><span class="tag">Ubuntu</span><span class="tag">Flask</span><span class="tag">Nginx</span><span class="tag">Git</span></div>
+          <a class="project-link" href="https://github.com/mohan101k/flask-ec2-production-app" target="_blank" rel="noopener">View repository ↗</a>
+        </article>
+        <article class="project reveal">
+          <div class="project-top"><span class="project-icon">☁</span><span class="project-type">AWS · Networking</span></div>
+          <h3>AWS VPC &amp; Load Balancing Labs</h3>
+          <p>Designed a custom VPC with public and private subnets, route tables, Internet Gateway, and NAT Gateway. Configured EC2 instances, Application Load Balancer, target groups, health checks, and path-based routing; debugged connectivity and unhealthy targets.</p>
+          <div class="tags"><span class="tag">VPC</span><span class="tag">EC2</span><span class="tag">ALB</span><span class="tag">Target Groups</span><span class="tag">Networking</span></div>
+        </article>
+        <article class="project reveal">
+          <div class="project-top"><span class="project-icon">▣</span><span class="project-type">Cloud · Containers</span></div>
+          <h3>AWS S3 + EC2 + Docker POC</h3>
+          <p>Hosted a static website on Amazon S3, launched an EC2 instance, installed Docker and Nginx, and practiced instance access, security-group rules, IAM role attachment, and S3 file operations through the AWS CLI.</p>
+          <div class="tags"><span class="tag">Amazon S3</span><span class="tag">EC2</span><span class="tag">Docker</span><span class="tag">Nginx</span><span class="tag">IAM</span></div>
+        </article>
+        <article class="project reveal">
+          <div class="project-top"><span class="project-icon">⌁</span><span class="project-type">Automation · AI</span></div>
+          <h3>AI Job Hunter POC</h3>
+          <p>Created the initial job-data collection workflow using Apify for scraping and DynamoDB for storage. Planned the next stages around API development, job filtering and matching, AI relevance scoring, email notifications, and an application dashboard.</p>
+          <div class="tags"><span class="tag">Apify</span><span class="tag">AWS DynamoDB</span><span class="tag">Automation</span><span class="tag">AI Matching</span></div>
+        </article>
+        <article class="project reveal">
+          <div class="project-top"><span class="project-icon">▤</span><span class="project-type">Software Development</span></div>
+          <h3>LifeCompass — JavaFX</h3>
+          <p>A Java desktop application project exploring a structured user interface and application workflows. Demonstrates object-oriented programming and desktop application development.</p>
+          <div class="tags"><span class="tag">Java</span><span class="tag">JavaFX</span><span class="tag">OOP</span></div>
+          <a class="project-link" href="https://github.com/mohan101k/LifeCompass_JAVA_Project" target="_blank" rel="noopener">View repository ↗</a>
+        </article>
+        <article class="project reveal">
+          <div class="project-top"><span class="project-icon">▧</span><span class="project-type">Mobile · Application</span></div>
+          <h3>AgriMart — E-Commerce App</h3>
+          <p>Flutter application for agricultural product discovery and shopping, including product listings, cart, checkout flows, and Firebase-backed authentication and Firestore integration.</p>
+          <div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Firebase Auth</span><span class="tag">Firestore</span></div>
+        </article>
+        <article class="project reveal">
+          <div class="project-top"><span class="project-icon">◫</span><span class="project-type">Academic · Web</span></div>
+          <h3>Shiksha Track</h3>
+          <p>Student Academic Monitoring System built as a BE project, using a Python Flask backend and relational database concepts with role-based access workflows.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">MySQL / SQLite</span><span class="tag">RBAC</span></div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- EDUCATION -->
-  <section id="education">
-    <div class="section-title">Education</div>
-    <div class="section-underline"></div>
-
-    <div class="cgpa-strip">
-      <div class="cgpa-pill"><div class="cgpa-val">8.19</div><div class="cgpa-lbl">Overall CGPA</div></div>
-      <div class="cgpa-pill"><div class="cgpa-val">8.40</div><div class="cgpa-lbl">Sem 7 SGPA</div></div>
-      <div class="cgpa-pill"><div class="cgpa-val">85%</div><div class="cgpa-lbl">HSC Science</div></div>
-      <div class="cgpa-pill"><div class="cgpa-val">93%</div><div class="cgpa-lbl">SSC</div></div>
-    </div>
-
-    <div style="height:32px"></div>
-    <div class="edu-grid">
-      <div class="edu-card">
-        <div>
-          <div class="edu-degree">B.E. Computer Science &amp; Engineering</div>
-          <div class="edu-school">NBN Sinhgad School of Engineering, Pune · Savitribai Phule Pune University</div>
-        </div>
-        <div class="edu-badge">2022 – 2026 · CGPA 8.19</div>
-      </div>
-      <div class="edu-card">
-        <div>
-          <div class="edu-degree">H.S.C — Science Stream</div>
-          <div class="edu-school">Shree Mainagiri Maharaj Vidyalaya, Toe · Maharashtra State Board</div>
-        </div>
-        <div class="edu-badge">2022 · 85%</div>
-      </div>
-      <div class="edu-card">
-        <div>
-          <div class="edu-degree">S.S.C</div>
-          <div class="edu-school">Shri Shivaji High School, Washim · Maharashtra State Board</div>
-        </div>
-        <div class="edu-badge">2020 · 93%</div>
+  <section class="skills" id="skills">
+    <div class="container">
+      <div class="section-head reveal"><div><div class="kicker">03 / Toolkit</div><h2>Technologies I work with.</h2></div><p>A practical toolkit built through projects, labs, coursework, and continuous hands-on learning.</p></div>
+      <div class="skill-grid">
+        <div class="skill reveal"><div class="skill-symbol">01 / CLOUD</div><h3>Cloud &amp; Infrastructure</h3><p>AWS · EC2 · VPC · S3 · IAM · ALB · Target Groups · Route Tables · IGW · NAT Gateway</p></div>
+        <div class="skill reveal"><div class="skill-symbol">02 / DEVOPS</div><h3>DevOps &amp; Automation</h3><p>Docker · Git · GitHub · GitLab · CI/CD concepts · Shell Scripting · Infrastructure troubleshooting</p></div>
+        <div class="skill reveal"><div class="skill-symbol">03 / OBSERVABILITY</div><h3>Monitoring &amp; Alerting</h3><p>Prometheus · Grafana · Node Exporter · Alertmanager · PagerDuty concepts</p></div>
+        <div class="skill reveal"><div class="skill-symbol">04 / SYSTEMS</div><h3>Linux &amp; Web Servers</h3><p>Ubuntu · Linux CLI · systemd · SSH · Nginx · Basic networking · Permissions</p></div>
+        <div class="skill reveal"><div class="skill-symbol">05 / DEVELOPMENT</div><h3>Programming &amp; Frameworks</h3><p>Java · Python · C · C++ · Dart · Flutter · Flask · JavaScript</p></div>
+        <div class="skill reveal"><div class="skill-symbol">06 / DATA</div><h3>Databases &amp; Tools</h3><p>MySQL · PostgreSQL · MongoDB · DynamoDB · Firebase · SQL · VS Code</p></div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-head reveal"><div><div class="kicker">04 / Experience &amp; learning</div><h2>Where I've built experience.</h2></div><p>Project-based experience and structured practical learning, with an emphasis on implementation and troubleshooting.</p></div>
+      <div class="experience">
+        <div class="exp-card reveal"><div class="date">JAN — MAR 2025 · 3 MONTHS</div><h3>Flutter Development Intern</h3><p>Incubators Systems Pvt. Ltd. — Developed Flutter applications including an agricultural e-commerce app and an MCQ quiz application, using Firebase services and following development and testing workflows.</p></div>
+        <div class="exp-card reveal"><div class="date">2026 · HANDS-ON PRACTICE</div><h3>Cloud &amp; DevOps Practical Labs</h3><p>Built AWS and Linux proof-of-concepts covering infrastructure networking, EC2 deployment, Docker, Nginx, monitoring, metrics collection, and alerting. Practiced configuration checks and troubleshooting.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="education" id="education">
+    <div class="container">
+      <div class="section-head reveal"><div><div class="kicker">05 / Education</div><h2>Academic foundation.</h2></div></div>
+      <div class="edu-list">
+        <div class="edu reveal"><div><h3>B.E. Computer Science &amp; Engineering</h3><p>NBN Sinhgad School of Engineering, Pune · Savitribai Phule Pune University</p></div><div class="edu-year">2022 — 2026</div></div>
+        <div class="edu reveal"><div><h3>H.S.C. — Science</h3><p>Shree Mainagiri Maharaj Vidyalaya · Maharashtra State Board</p></div><div class="edu-year">2022 · 85%</div></div>
+        <div class="edu reveal"><div><h3>S.S.C.</h3><p>Shri Shivaji High School, Washim · Maharashtra State Board</p></div><div class="edu-year">2020 · 93%</div></div>
+      </div>
+    </div>
+  </section>
+
   <section id="contact">
-    <div class="section-title">Let's Work Together</div>
-    <div class="section-underline"></div>
-    <p class="contact-sub">
-      Open to internship opportunities, entry-level roles, and collaborative projects.
-      Feel free to reach out for any inquiries about Flutter development or mobile applications.
-    </p>
-    <div class="contact-btns">
-     <!-- Resume 1 - Development -->
-<a class="contact-btn resume-btn"
-   href="https://drive.google.com/file/d/1CDBXzlnCBqrSaB2aVxKIbxUFAL2caGxq/view?usp=drive_link"
-   target="_blank"
-   rel="noopener">
-  <span>📄</span> Resume-1 (Development)
-</a>
-
-<!-- Resume 2 - DevOps -->
-<a class="contact-btn resume-btn"
-   href="https://drive.google.com/file/d/1HsYtrpaM19IDjd71rF3cQ58eAQ608Yop/view?usp=drive_link"
-   target="_blank"
-   rel="noopener">
-  <span>📄</span> Resume-2 (DevOps)
-</a>
-      <a class="contact-btn" href="#" onclick="alert('📧 Email: email.mohanjadhav@gmail.com'); return false;">
-        <span>✉️</span> Email
-      </a>
-      <a class="contact-btn" href="https://github.com/mohan101k" target="_blank">
-        <span>🐙</span> GitHub
-      </a>
-      <a class="contact-btn" href="https://gitlab.com/mohan101k" target="_blank">
-        <span>🦊</span> GitLab
-      </a>
-      <a class="contact-btn" href="https://www.linkedin.com/in/mohanj18/" target="_blank">
-        <span>🔗</span> LinkedIn
-      </a>
-      <a class="contact-btn" href="#" onclick="alert('📞 Phone: +91 9960939448'); return false;">
-        <span>📞</span> Call
-      </a>
+    <div class="container">
+      <div class="contact-box reveal">
+        <div class="kicker">06 / Contact</div>
+        <h2>Let's build something useful.</h2>
+        <p>Have a project, opportunity, or idea to discuss? Reach out. I'm always interested in connecting with people who build, automate, and improve technology.</p>
+        <div class="contact-links">
+          <a href="mailto:email.mohanjadhav@gmail.com">✉ Email</a>
+          <a href="https://github.com/mohan101k" target="_blank" rel="noopener">⌘ GitHub</a>
+          <a href="https://gitlab.com/mohan101k" target="_blank" rel="noopener">⌘ GitLab</a>
+          <a href="https://www.linkedin.com/in/mohanj18/" target="_blank" rel="noopener">↗ LinkedIn</a>
+          <a href="https://drive.google.com/file/d/1HsYtrpaM19IDjd71rF3cQ58eAQ608Yop/view?usp=drive_link" target="_blank" rel="noopener">▤ DevOps Resume</a>
+          <a href="https://drive.google.com/file/d/1CDBXzlnCBqrSaB2aVxKIbxUFAL2caGxq/view?usp=drive_link" target="_blank" rel="noopener">▤ Development Resume</a>
+          <a href="tel:+919960939448">☎ Call</a>
+        </div>
+      </div>
     </div>
   </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2025 Mohan Vasudev Jadhav | Flutter Developer &amp; CS Engineer | All Rights Reserved</p>
-    <p>Crafted with passion • Designed &amp; Built by Mohan Jadhav</p>
-  </footer>
-
+</main>
+<footer><div class="container"><span>© <span id="year"></span> Mohan Jadhav. Built with curiosity &amp; code.</span><span>Software Engineering · Cloud · DevOps</span></div></footer>
+<script>
+  const menuBtn=document.getElementById('menuBtn');
+  const navlinks=document.getElementById('navlinks');
+  menuBtn.addEventListener('click',()=>{const open=navlinks.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open));});
+  navlinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{navlinks.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');}));
+  document.getElementById('year').textContent=new Date().getFullYear();
+  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  const sections=[...document.querySelectorAll('main section[id]')];
+  const navObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){document.querySelectorAll('.navlinks a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+entry.target.id));}}),{rootMargin:'-35% 0px -55% 0px'});
+  sections.forEach(section=>navObserver.observe(section));
+</script>
 </body>
 </html>
